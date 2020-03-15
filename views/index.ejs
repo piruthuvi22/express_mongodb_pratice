@@ -2,31 +2,39 @@
 <html lang="en">
 
 <head>
+    <script src="../server.js"></script>
+
     <meta charset="UTF-8">
     <title>MY APP</title>
 </head>
 
 <body>
-    <ul class="quotes">
-        <% for(var i=0; i<quotes.length; i++) {%>
-        <li class="quote">
-            <span><%= quotes[i]._id %></span>
-            <span><%= quotes[i].name %></span>
-            <span><%= quotes[i].quote %></span>
-        </li>
-        <% } %>
-    </ul>
+
+    <table border="1px" width="40%" >
+        <tr align="center"></tr>
+            <th>Objrct_ID</th>
+            <th>Name</th>
+            <th>Quote</th>
+        </tr>
+            <% for(var i=0; i<quotes.length; i++) {%>
+            <tr align="center">
+                <td><%= quotes[i]._id %></td>
+                <td><%= quotes[i].name %></td>
+                <td><%= quotes[i].quote %></td>
+                <td><button onclick="edit('<%= quotes[i]._id %>')">Edit</button></td>
+            </tr>
+            <% } %>
+    </table>
+
+
     <form action="/quotes" method="POST">
+
         <input type="text" placeholder="name" name="name">
         <input type="text" placeholder="quote" name="quote">
         <button type="submit">Submit</button>
-        <div>
-            <h2>Replace last quote written by Master Yoda with a quote written by Darth Vadar</h2>
-            <button id="update"> Darth Vadar invades! </button>
-        </div>
+
     </form>
 
-    <script src="main.js"></script>
 
 </body>
 
